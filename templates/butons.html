@@ -1,0 +1,7 @@
+{% for x in my_data %}
+{% ifchanged x.category %}
+<a href="/category/{{x.category}}/"><button id="datetime">
+  {{x.category}}
+</button></a><br>
+{% endifchanged %}
+{% endfor %}

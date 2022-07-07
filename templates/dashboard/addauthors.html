@@ -1,0 +1,22 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  Add Authors
+{% endblock title %}
+
+{% block body %}
+
+<br>
+<center>
+    <h5 style="color: #009CFF;">Add Authors</h5>
+</center>
+
+
+<form  style="margin: 10px; width:400px;" method=POST>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button style="color: white;" class="btn btn-info" type="submit">Create</button>
+</form>
+
+{% endblock body %}

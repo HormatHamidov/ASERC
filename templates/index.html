@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{% for t in my_pages1 %}
+{{t.pagename}} | ASERC
+{% endfor %}
+{% endblock title %}
+
+{% block body %}
+{% for t in my_pages1 %}
+  
+<div class="index">
+  {% for i in my_images %}
+  
+    <div style="text-align: center; margin:10px;" class="img-1">
+      <img src="{{i.LeftBarImage.url}}" alt=""><br><br><br>
+      <a href="https://doaj.org/"><img src="{% static 'img/open.svg' %}" alt=""></a><br><br>
+      <button id="partners">Partners</button>
+      <br><br>
+      <div class="bosh"></div>
+    </div>
+  
+    <div class="index-txt" style="background-color: white; width:60%;">
+        <h3 style="margin: 10px;">{{t.title}}</h3><br>
+        <h4 style="margin: 10px; font-weight:300;">
+          {{t.text | safe}}
+        </h4>
+    </div>
+  
+    <div class="img-2">
+      <img src="{{i.RightBarImage.url}}" alt=""><br><br>
+      <button id="archive">Archive</button><br>
+
+
+      
+
+      {% include "butons.html" %}
+      
+  
+    </div>
+  </div>
+  {% endfor %}
+  {% endfor %}
+
+{% endblock body %}
+

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Categorys | ASERC
+{% endblock title %}
+
+
+{% block body %}
+
+{% for i in my_images %}
+
+<div class="index">
+    <div style="text-align: center;" class="img-1">
+      <img src="{{i.LeftBarImage.url}}" alt=""><br><br><br>
+      <a href="https://doaj.org/"><img src="{% static 'img/open.svg' %}" alt=""></a><br><br>
+      <button id="partners">Partners</button>
+      <br><br>
+      <div class="bosh"></div>
+    </div>
+  
+    <div style="width: 600px;" class="index-txt">
+            {% for x in my_data %}
+          
+
+            {% ifchanged x.category%}
+            <h1 id="changed-h1">{{x.category}}</h1>
+            <center>
+              <hr>
+            </center>
+            {% endifchanged %}
+
+            
+            <a href="/categorydetails/{{x.id}}/"><h2 id="changed-a">{{x.title}}</h2></a>
+
+            <h4 style="margin: 10px; font-weight: 500;">By : {% for author in x.article_author.all %}  {{author}} / {% endfor %}</h4>
+
+            <h5 style="margin: 10px; font-weight: 300;">DOI: dx.doi.org/10.14254/2071-789X.200 8/1-1/1 </h5>
+
+            <center>
+              <hr>
+            </center>
+                   
+            {% endfor %}
+
+            <center>
+              <br><a id="back-btn" href="/"><i class="fa-solid fa-angles-left"></i> back</a>
+            </center> <br>
+    </div>
+  
+    <div class="img-2">
+      <img src="{{i.RightBarImage.url}}" alt=""><br><br>
+      <button id="archive">Archive</button><br>
+      
+      {% include "butons.html" %}
+
+    </div>
+  </div>
+
+  {% endfor %}
+
+{% endblock body %}

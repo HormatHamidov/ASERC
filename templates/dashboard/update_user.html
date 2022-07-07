@@ -1,0 +1,24 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  Update Post
+{% endblock title %}
+
+
+{% block body %}
+
+<br>
+<center>
+    <h5 style="color: #009CFF;">Update User</h5>
+</center>
+
+
+<form style="margin:10px; width:400px;" method='post'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button style="color: white;" class="btn btn-info" type="submit">Update</button>
+</form>
+
+
+{% endblock body %}

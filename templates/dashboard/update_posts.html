@@ -1,0 +1,32 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+  Update Post
+{% endblock title %}
+
+
+{% block body %}
+
+<br>
+<center>
+    <h5 style="color: #009CFF;">Update Post</h5>
+</center>
+
+
+<form  style="margin: 10px; width:500px;" method=POST>
+    {% csrf_token %}
+    {{form.media}}
+    {{form|crispy}}
+    <br><br>
+
+    <button style="color: white;" class="btn btn-info" type="submit">Update</button>
+</form>
+
+
+
+
+{% endblock body %}

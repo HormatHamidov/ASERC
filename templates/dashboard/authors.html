@@ -1,0 +1,81 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  AddUser
+{% endblock title %}
+
+
+{% block body %}
+
+
+<!-- Recent Sales Start --> 
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Authors</h6>
+          <a class="btn btn-sm btn-primary" href="{% url 'dashboard:addauthors' %}"><i class="fa-solid fa-plus"></i></a>
+      </div>
+
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                  <tr id class="text-dark">
+                      <th scope="col">#</th>
+                      <th scope="col">Author Name</th>
+              </thead>
+              {% for p in my_post %}
+              <tbody>
+                  <tr>
+                      <th scope="row">{{p.id}}</th>
+                      <td>{{p.name}}</td>
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:editauthors' p.id %}"><i class="fa-solid fa-gear"></i></a></center></td>
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:deleteauthors' p.id %}"><i class="fa-solid fa-trash"></i></a></center></td>
+                  </tr>
+              </tbody>
+              {% endfor %}
+          </table>
+      </div>
+  </div>
+</div>
+<!-- Recent Sales End -->
+
+<br>
+<hr>
+
+
+
+<!-- Recent Sales Start --> 
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Tags</h6>
+          <a class="btn btn-sm btn-primary" href="{% url 'dashboard:addtags' %}"><i class="fa-solid fa-plus"></i></a>
+      </div>
+
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                  <tr id class="text-dark">
+                      <th scope="col">#</th>
+                      <th scope="col">Tags Name</th>
+                  </tr>
+              </thead>
+              {% for p in my_tags %}
+              <tbody>
+                  <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{p.text}}</td>
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:edittags' p.id %}"><i class="fa-solid fa-gear"></i></a></center></td>
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:deletetags' p.id %}"><i class="fa-solid fa-trash"></i></a></center></td>
+                  </tr>
+              </tbody>
+              {% endfor %}
+          </table>
+      </div>
+  </div>
+</div>
+<!-- Recent Sales End -->
+
+
+{% endblock body %}

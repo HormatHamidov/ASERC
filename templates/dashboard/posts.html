@@ -1,0 +1,69 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  Posts
+{% endblock title %}
+
+{% block body %}
+<!-- Recent Sales Start -->
+
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Posts</h6>
+          <a class="btn btn-sm btn-primary" href="{% url 'dashboard:addpost' %}"><i class="fa-solid fa-plus"></i></a>
+      </div>
+
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                  <tr class="text-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Author Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Tags</th>
+                    <th scope="col">Image</th>
+
+                  </tr>
+              </thead>
+              {% for p in my_post %}
+              <tbody>
+                  <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{p.category}}</td>
+                      <td>{% for author in p.article_author.all %}  {{author}} ,  {% endfor %}</td>
+                      <td>{{p.title}}</td>
+                      <td>{{p.text | safe}}</td>
+                      <td>{% for tag in p.tag.all %}  {{tag.text}} ,  {% endfor %}</td>
+
+                      {% if p.fileurl %}
+                      <td><img style="width: 100px; height:110px;" src="{{p.fileurl.url}}"></td>
+                      {% else %}
+                      <td>Null</td>
+                      {% endif %}
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:updatepost' p.id %}"><i class="fa-solid fa-gear"></i></a></center></td>
+                      <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:deletepost' p.id %}"><i class="fa-solid fa-trash"></i></a></center></td>
+                  </tr>
+              </tbody>
+              {% endfor %}
+          </table>
+      </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+
+{% block title %}
+  Users
+{% endblock title %}
+
+{% block body %}
+
+
+
+<!-- Recent Sales Start --> 
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Users</h6>
+            <a class="btn btn-sm btn-primary" href="{% url 'dashboard:adduser' %}"><i class="fa-solid fa-plus"></i></a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr id class="text-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Surname</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                {% for u in my_user %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{u.first_name}}</td>
+                        <td>{{u.last_name}}</td>
+                        <td>{{u.username}}</td>
+                        <td>{{u.email}}</td>
+                        <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:updateuser' u.id %}"><i class="fa-solid fa-gear"></i></a></center></td>
+                        <td><center><a class="btn btn-sm btn-primary" href="{% url 'dashboard:deleteuser' u.id %}"><i class="fa-solid fa-trash"></i></a></center></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Recent Sales End -->
+
+
+{% endblock body %}
+
+

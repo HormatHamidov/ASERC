@@ -1,0 +1,38 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  Pages
+{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-light text-center rounded p-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Pages</h6>
+      </div>
+
+      <div class="table-responsive">
+          <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <tbody>
+                  <tr>
+                      <td><a href="{% url 'dashboard:page1' %}">Page 1</a></td>
+                      <td><a href="{% url 'dashboard:page2' %}">Page 2</a></td>
+                      <td><a href="{% url 'dashboard:page3' %}">Page 3</a></td>
+                      <td><a href="{% url 'dashboard:page4' %}">Page 4</a></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+{% endblock body %}
+
+
+
+
+
+

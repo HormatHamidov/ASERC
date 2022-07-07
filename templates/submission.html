@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Submission | ASERC
+{% endblock title %}
+
+
+{% block body %}
+
+<div class="index">
+  {% for i in my_images %}
+    
+  <div style="text-align: center;" class="img-1">
+    <img src="{{i.LeftBarImage.url}}" alt=""><br><br><br>
+    <a href="https://doaj.org/"><img src="{% static 'img/open.svg' %}" alt=""></a><br><br>
+    <button id="partners">Partners</button>
+    <br> <br>
+    <div class="bosh"></div>
+  </div>
+  <div class="input-html">
+    <h3>Submission</h3>
+    <!-- <div class="wrapper">
+      <div class="input_group">
+          <div class="input_box">
+              <label>Article title</label><br>
+              <input type="text" required class="name"><br><br>
+          </div>
+          <div class="input_box">
+            <label>Corresponding author's name</label><br>
+            <input type="text" required class="name"><br><br>
+          </div>
+      </div>
+    
+      <div class="input_group">
+        <div class="input_box">
+          <label>Corresponding author's primary affiliation</label><br>
+          <input type="text" required class="name"><br><br>
+        </div>
+        <div class="input_box">
+          <label>Country of primary affiliation</label><br>
+          <input type="text" required class="name"><br><br>
+        </div>
+      </div> 
+      
+      <div class="input_group">
+        <div class="input_box">
+          <label>Corresponding author's email</label><br>
+          <input type="email" required class="name"><br><br>
+        </div>
+        <div class="input_box">
+          <label>Keywords (5-8 keywords)</label><br>
+          <input type="text" maxlength="8" placeholder="keyword1/keyword2/keyword3" required class="name"><br><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="input_box">
+      <label>Abstract (150-200 words)</label><br>
+      <textarea cols="30" rows="10"></textarea>
+      <br><br>
+    </div>
+
+    <label style="margin:10px;">Reviwer suggestions</label><br>
+    <div id="inputbox" class="input_box">
+      <div>
+        <label>Name</label><br>
+        <input style="width:130px;" type="text" maxlength="30" minlength="2" required class="name"><br>
+      </div>
+      <div>
+        <label>Surname</label><br>
+        <input style="width:130px;" type="text" maxlength="30" minlength="2" required class="name"><br>
+      </div>
+      <div>
+        <label>Email</label><br>
+        <input style="width:170px;" type="email" required class="name">
+      </div>
+    </div> -->
+
+
+    {% if submitted %}
+    <center><h2 style="margin: 40px;">Successfully Sent</h2></center> <br>
+
+    <center>
+      <br><a style="text-decoration: none; color:black;" href="/"><i class="fa-solid fa-angles-left"></i> back</a>
+    </center><br>
+    {% else %}
+
+    <div class="wrapper">
+      
+    
+    <form  action="" method=POST>
+      {% csrf_token %}
+
+      <div class="input_group">
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.articletitle.label }}</p>
+          {{ form.articletitle }}
+        </div>
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.author_name.label }} <br></p>
+          {{ form.author_name }}
+        </div>
+      </div>
+
+      <div class="input_group">
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.affiliation_name.label }}<br></p>
+          {{ form.affiliation_name }}
+        </div>
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.country.label }} <br></p>
+          {{ form.country }}
+        </div>
+      </div> 
+
+
+      <div class="input_group">
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.author_email.label }} <br></p> 
+          {{ form.author_email }}
+        </div>
+        <div class="input_box">
+          <p style="font-size: small;">{{ form.keywords.label }} <br></p> 
+          {{ form.keywords }}
+        </div>
+      </div> 
+
+      <div class="input_box">
+        <p style="font-size: small;">{{ form.abstracted.label }} <br></p>
+        {{ form.abstracted }}
+        <br><br>
+      </div>
+
+
+
+      <label style="margin:10px;">Reviwer suggestions (optional)</label><br>
+      <div style="width: 93.5%;" id="inputbox" class="input_box">
+        <div>
+          <p style="font-size: small;">{{ form.firstname.label }}</p> 
+          {{ form.firstname }}
+        </div>
+        <div>
+          <p style="font-size: small;">{{ form.lastname.label }}</p> 
+          {{ form.lastname }}
+        </div>
+        <div>
+          <p style="font-size: small;">{{ form.email.label }}</p> 
+          {{ form.email }}
+        </div>
+      </div>
+    </div>
+
+      <input id="confirm-btn" type="submit" value="Confirm">
+    </form>
+
+    <center>
+      <br><a style="text-decoration: none; color:black;" href="/"><i class="fa-solid fa-angles-left"></i> back</a>
+    </center><br>
+
+
+    {% endif %}
+
+  </div>
+
+  <div class="img-2">
+    <img src="{{i.RightBarImage.url}}" alt=""><br><br>
+    <button id="archive">Archive</button><br>
+
+    {% include "butons.html" %}
+    
+
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock body %}

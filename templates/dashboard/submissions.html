@@ -1,0 +1,64 @@
+{% extends 'dashboard/dsh_base.html' %}
+{% load static %}
+
+{% block title %}
+  Submissions
+{% endblock title %}
+
+{% block body %}
+
+<!-- Recent Sales Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Submissions</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Author Name</th>
+                        <th scope="col">Author's primary affiliation</th>
+                        <th scope="col">Surname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Author Email</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Article Title</th>
+                        <th scope="col">Keywords</th>
+                        <th scope="col">Abstracted</th>
+
+                    </tr>
+                </thead>
+                {% for s in my_sub %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{s.firstname}}</td>
+                        <td>{{s.author_name}}</td>
+                        <td>{{s.affiliation_name}}</td>
+                        <td>{{s.lastname}}</td>
+                        <td>{{s.email}}</td>
+                        <td>{{s.author_email}}</td>
+                        <td>{{s.country}}</td>
+                        <td>{{s.articletitle}}</td>
+                        <td>{{s.keywords}}</td>
+                        <td>{{s.abstracted}}</td>
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Recent Sales End -->
+
+
+<!-- Content End -->
+{% endblock body %}
+
+
+
+

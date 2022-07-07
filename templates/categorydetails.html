@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Category Details | ASERC
+{% endblock title %}
+
+{% block body %}
+
+{% for i in my_images %}
+  
+<div class="index">
+    <div style="text-align: center;" class="img-1">
+      <img src="{{i.LeftBarImage.url}}" alt=""><br><br><br>
+      <a href="https://doaj.org/"><img src="{% static 'img/open.svg' %}" alt=""></a><br><br>
+      <button id="partners">Partners</button>
+      <br><br>
+      <div class="bosh"></div>
+    </div>
+  
+    <div style="width: 600px;" class="index-txt">
+          
+          {% if my_tag %}
+            
+            {% for x in my_tag %}
+
+
+            <h2 style=" margin:10px; font-weight: 600;">{{x.articleid.title}}</h2>
+
+            <h4 style="margin:10px; font-weight: 300;">{{x.articleid.text | safe}}</h4>
+
+            <center>
+              {% if my_tag.fileurl %}
+                <h4 style="margin: 10px;"><img style="width: 400px;" src="{{my_tag.fileurl.url}}" alt=""></h4>
+              {% endif %}
+            </center>
+
+            <button id="download" onclick="window.print()">Print</button><br><br>
+
+            {% for h in x.tagid.all %} <button id="tags"> {{h.text}}  </button></a>{% endfor %}
+
+
+            <center>
+              <br><a id="back-btn" href="/"><i class="fa-solid fa-angles-left"></i> back</a>
+            </center>
+                   
+            {% endfor %}
+
+            {% else %}
+
+              <h2 style="margin:10px; font-weight: 600;">{{article.title}}</h2>
+
+              <h4 style="margin:10px; font-weight: 300;">{{article.text | safe}}</h4>
+
+            
+            <center>
+              
+              {% if article.fileurl %}
+                <h4 style="margin: 10px;"><img id="postimg" style="width: 400px;" src="{{article.fileurl.url}}" alt=""></h4>
+              {% endif %}
+                
+            </center>
+
+            <button id="download" onclick="window.print()">Print</button><br><br>
+
+            {% for h in article.tag.all %} <button id="tags"> {{h.text}}  </button></a>{% endfor %}
+
+
+            <center>
+              <br><a id="back-btn" href="/"><i class="fa-solid fa-angles-left"></i> back</a>
+            </center><br>
+
+
+            {% endif %}
+
+
+    </div>
+
+
+
+
+
+    <div class="img-2">
+      <img src="{{i.RightBarImage.url}}" alt=""><br><br>
+      <button id="archive">Archive</button><br>
+
+      {% include "butons.html" %}
+      
+  
+    </div>
+  </div>
+
+
+
+
+
+
+  {% endfor %}
+
+{% endblock body %}

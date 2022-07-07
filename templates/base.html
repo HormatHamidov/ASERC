@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/logo.svg' %}">
+    <title>{% block title %} ASERC {% endblock title %}</title>
+
+    <!-- MY CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="http://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet"></head>
+
+<body>
+    
+<h2 id="title-txt">ASERC Journal of Socio-Economic Studies</h2><br>
+
+<nav class="navbar">
+    <div class="brand-title"><img src="{% static 'img/logo.svg' %}" alt=""></div>
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+
+      <ul>
+        <li><a class = "{% if request.resolver_match.url_name == 'index' %} active {% endif %}" href="/">{% for t in my_pages1 %} {{t.pagename}} {% endfor %} </a></li>
+        <li><a class = "{% if request.resolver_match.url_name == 'editorial' %} active {% endif %}" href="/editorial">{% for t in my_pages2 %} {{t.pagename}} {% endfor %}</a></li>
+        <li><a class = "{% if request.resolver_match.url_name == 'guideline' %} active {% endif %}" href="/guideline">{% for t in my_pages3 %} {{t.pagename}} {% endfor %}</a></li>
+        <li><a class = "{% if request.resolver_match.url_name == 'abstracted' %} active {% endif %}" href="/abstracted">{% for t in my_pages4 %} {{t.pagename}} {% endfor %}</a></li>
+        <li><a class = "{% if request.resolver_match.url_name == 'submission' %} active {% endif %}" href="/submission">Submission</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+{% block body %}
+      
+{% endblock body %}
+
+{% include "footer.html" %}
+

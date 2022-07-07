@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <center>
+        <h1 style="color: #009CFF;"># ASERC</h1>
+    </center>
+
+    <center>
+        <div style="background-color: #009CFF; margin:50px; padding:50px; width:600px;  border-radius:10px;">
+            <center>
+                <form  style="margin: 10px; width:400px; color:white; font-weight: 600; font-size:16px;" method=POST>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <button style="cursor:pointer; color: #009CFF; background-color:white; border:none; border-radius:5px; padding:10px;" class="btn btn-info" type="submit">Sign in</button>
+                </form>
+            </center>
+        </div>
+    </center>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
